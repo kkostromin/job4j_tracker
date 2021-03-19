@@ -1,4 +1,4 @@
 package ru.job4j.prof;
 
-public class Toothnumber extends Dentist{
+public class Toothnumber {
 }

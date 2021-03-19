@@ -1,4 +1,4 @@
 package ru.job4j.prof;
 
-public class Extraction extends Dentist {
+public class Extraction{
 }
