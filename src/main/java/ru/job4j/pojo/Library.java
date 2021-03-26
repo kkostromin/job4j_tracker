@@ -17,6 +17,7 @@ package ru.job4j.pojo;
 public class Library {
 
     public static void main(String[] args) {
+        String str1 = "";
         Book book1 = new Book("'Clean code'", 100);
         Book book2 = new Book("'Master'", 300);
         Book book3 = new Book("'Book3'", 10);
@@ -37,18 +38,18 @@ public class Library {
         books[0] = books[3];
         books[3] = tmp;
 
-        System.out.println("List of books after change:");
+        System.out.println("-----List of books after change:");
 
         for (int index = 0; index < books.length; index++){
             Book bk = books[index];
             System.out.println("In book " + bk.getName() + " number of pages :" + bk.getNumberpages());
-
         }
 
-        System.out.println("Thr books with name 'Clean code': ");
+        System.out.println("-----Thr books with name 'Clean code': ");
         for (int index = 0; index < books.length; index++){
             Book bk = books[index];
-            if (bk.getName() == "'Clean code'") {
+            str1 = bk.getName();
+            if (str1.equals("'Clean code'")) {
                 System.out.println("In book " + bk.getName() + " number of pages :" + bk.getNumberpages());
             }
         }
