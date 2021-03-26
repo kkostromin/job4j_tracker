@@ -27,7 +27,7 @@ public class Library {
         books[2] = book3;
         books[3] = book4;
 
-        for (int index = 0; index <= 3; index++){
+        for (int index = 0; index < books.length; index++){
             Book bk = books[index];
             System.out.println("In book " + bk.getName() + " number of pages :" + bk.getNumberpages());
         }
@@ -39,14 +39,14 @@ public class Library {
 
         System.out.println("List of books after change:");
 
-        for (int index = 0; index <= 3; index++){
+        for (int index = 0; index < books.length; index++){
             Book bk = books[index];
             System.out.println("In book " + bk.getName() + " number of pages :" + bk.getNumberpages());
 
         }
 
         System.out.println("Thr books with name 'Clean code': ");
-        for (int index = 0; index <= 3; index++){
+        for (int index = 0; index < books.length; index++){
             Book bk = books[index];
             if (bk.getName() == "'Clean code'") {
                 System.out.println("In book " + bk.getName() + " number of pages :" + bk.getNumberpages());
