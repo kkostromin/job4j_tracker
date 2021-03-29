@@ -25,43 +25,33 @@ public class Tracker {
     }
 
     public Item[] findAll(){
-        int size = 0;
+        int sizeItemAll = 0;
         Item[] itemWithoutNull = new Item[items.length];
         for (int index = 0; index < items.length; index++) {
             Item item = items[index];
             if (item != null) {
-                itemWithoutNull[size] = item;
-                size++;
+                itemWithoutNull[sizeItemAll] = item;
+                sizeItemAll++;
             }
         }
-        itemWithoutNull = Arrays.copyOf(itemWithoutNull, size);
-        for (int index = 0; index < itemWithoutNull.length; index++) {
-            System.out.println("Запись с id : " + index + " --- " + itemWithoutNull[index].getName());
-        }
-        return itemWithoutNull;
+        return Arrays.copyOf(items, sizeItemAll);
     }
 
     public Item[] findByName(String key){
-        int size = 0;
+        int sizefindByName = 0;
         String str = "";
         Item[] itemResults = new Item[items.length];
         for (int index = 0; index < items.length; index++) {
             Item item = items[index];
-            try {
+            if (item != null) {
                 str = item.getName();
                 if (str.equals(key)) {
-                    itemResults[size] = item;
-                    size++;
+                    itemResults[sizefindByName] = item;
+                    sizefindByName++;
                 }
             }
-            catch (NullPointerException e){
-                //System.out.println(" item is null ");
-            }
         }
-        itemResults = Arrays.copyOf(itemResults, size);
-        for (int index = 0; index < size; index++) {
-            System.out.println("Запись : " + " --- " + itemResults[index].getName());
-        }
+        itemResults = Arrays.copyOf(itemResults, sizefindByName);
         return itemResults;
     }
 
@@ -71,10 +61,27 @@ public class Tracker {
             Item item = items[index];
             if (item.getId() == id) {
                 rsl = item;
-                System.out.println("Запись с id : " + id + " --- " + item.getName());
                 break;
             }
         }
         return rsl;
     }
+
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /*public boolean replace(int id, Item item) {
+        boolean rsl = false;
+        items[indexOf(id)] = item;
+        System.out.println("Индекс  id : " + " --- " + items[indexOf(id)].getName());
+        return rsl;
+    }*/
 }
