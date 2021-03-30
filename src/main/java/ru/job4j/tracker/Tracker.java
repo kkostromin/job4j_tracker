@@ -38,7 +38,7 @@ public class Tracker {
                 sizefindByName++;
             }
         }
-        return itemResults = Arrays.copyOf(itemResults, sizefindByName);
+        return Arrays.copyOf(itemResults, sizefindByName);
     }
 
     public Item findById(int id) {
