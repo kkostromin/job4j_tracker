@@ -12,6 +12,9 @@ import java.util.Arrays;
 2. Создайте класс ru.job4j.tracker.StartUI. В нем создайте метод main.
     Внутри метода main создайте объект Tracker. Вызовите у него метод add с объектом Item.
     Вызовите метод findById и найденный Item выведите на консоль.
+3. Реализуйте метод Tracker.delete, используя indexOf. Причем вызов indexOf должен быть один.
+   Метод delete возвращает true, если заявление удалено или false, если index не найдет по id.
+
  */
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -65,6 +68,18 @@ public class Tracker {
         if (ids != -1) {
             item.setId(id);
             items[ids] = item;
+            rsl = true;
+        }
+        return rsl;
+    }
+
+    public boolean delete(int id) {
+        boolean rsl = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(items, index + 1, items, index, size - index);
+            items[size - 1] = null;
+            size--;
             rsl = true;
         }
         return rsl;
