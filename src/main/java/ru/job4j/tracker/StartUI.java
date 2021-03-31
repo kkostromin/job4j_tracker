@@ -21,8 +21,5 @@ public class StartUI {
        System.out.println("----FindById-----");
        Item itemResult = tracker.findById(1);
        System.out.println("Item result " + itemResult.getName());
-       tracker.findAll();
-       tracker.findByName("1111");
-
     }
 }

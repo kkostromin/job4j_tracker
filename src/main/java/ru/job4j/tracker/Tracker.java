@@ -42,15 +42,10 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        /* Находим индекс */
+        int index = indexOf(id);
+        /* Если индекс найден возвращаем item, иначе null */
+        return index != -1 ? items[index] : null;
     }
 
     private int indexOf(int id) {
@@ -64,10 +59,14 @@ public class Tracker {
         return rsl;
     }
 
-    /*public boolean replace(int id, Item item) {
+    public boolean replace(int id, Item item) {
         boolean rsl = false;
-        items[indexOf(id)] = item;
-        System.out.println("Индекс  id : " + " --- " + items[indexOf(id)].getName());
+        ids = indexOf(id);
+        if (ids >= 0) {
+            item.setId(id);
+            items[ids] = item;
+            rsl = true;
+        }
         return rsl;
-    }*/
+    }
 }
