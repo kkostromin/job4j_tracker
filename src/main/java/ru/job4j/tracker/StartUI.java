@@ -8,6 +8,7 @@ public class StartUI {
     public static void main(String[] args) {
        Item item1 = new Item(1, "1111");
        Item item2 = new Item(2, "2222");
+       Item item3 = new Item(3, "3333");
 
        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
        LocalDateTime itemDate = item1.getDate();
@@ -21,5 +22,6 @@ public class StartUI {
        System.out.println("----FindById-----");
        Item itemResult = tracker.findById(1);
        System.out.println("Item result " + itemResult.getName());
+       System.out.println(item3.toString());
     }
 }
