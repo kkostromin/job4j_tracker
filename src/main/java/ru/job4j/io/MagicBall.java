@@ -22,7 +22,7 @@ public class MagicBall {
             case (1):
                 System.out.print("Нет");
                 break;
-            case (2):
+            default:
                 System.out.print("Может быть");
                 break;
         }
