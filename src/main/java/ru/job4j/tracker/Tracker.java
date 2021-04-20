@@ -86,16 +86,4 @@ public class Tracker {
         }
         return rsl;
     }
-
-    public int getSize() {
-        return size;
-    }
-
-    public int getIds() {
-        return ids;
-    }
-
-    public int getItemsLength() {
-        return items.length;
-    }
 }
