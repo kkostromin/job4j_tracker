@@ -22,7 +22,7 @@ public class StartUI {
             System.out.println("=== All items ====>\n");
             Item[] itemRsl = tracker.findAll();
             for(Item item : itemRsl){
-               System.out.println(item.getName());
+               System.out.println(item);
             }
          } else if (select == 2) {
             System.out.println("=== Enter id's item ====>\n");
