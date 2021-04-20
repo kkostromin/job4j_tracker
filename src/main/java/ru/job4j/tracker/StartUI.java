@@ -16,14 +16,12 @@ public class StartUI {
             System.out.println("=== Create a new Item ====");
             System.out.print("Enter name: ");
             String name = scanner.nextLine();
-            Item item = new Item(tracker.getIds(), name);
+            Item item = new Item(name);
             tracker.add(item);
          } else if (select == 1) {
             System.out.println("=== All items ====>\n");
-            Item[] itemRsl = new Item[tracker.getItemsLength()];
-            itemRsl = tracker.findAll();
-            for (int index = 0; index < tracker.getSize(); index++){
-               Item item = itemRsl[index];
+            Item[] itemRsl = tracker.findAll();
+            for(Item item : itemRsl){
                System.out.println(item.getName());
             }
          } else if (select == 2) {
@@ -31,7 +29,7 @@ public class StartUI {
             int ids = Integer.valueOf(scanner.nextLine());
             System.out.println("=== Enter new item name ====>\n");
             String name = scanner.nextLine();
-            Item itemNew = new Item(tracker.getIds(), name);
+            Item itemNew = new Item(name);
             if (tracker.replace(ids, itemNew)) {
                System.out.println("Ok");
             } else {
@@ -59,9 +57,8 @@ public class StartUI {
             String name = scanner.nextLine();
             Item[] rstItem = tracker.findByName(name);
             if (rstItem.length > 0) {
-               for (int index = 0; index < rstItem.length; index++){
-                  Item item = rstItem[index];
-                  System.out.println("Id : " + item.getId() + " "+ " Name :" + item.getName());
+               for(Item item : rstItem){
+                  System.out.println(item);
                }
             } else {
                System.out.println("Item not found");
