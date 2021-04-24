@@ -6,7 +6,39 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-   public void init(Input input, Tracker tracker) {
+      public static void createItem(Input input, Tracker tracker){
+         System.out.println("=== Create a new Item ====");
+         String msg0 = "Enter name: ";
+         String name = input.askStr(msg0);
+         Item item = new Item(name);
+         tracker.add(item);
+      }
+
+      public static void replaceItem(Input input, Tracker tracker) {
+         String msg2_1 = "=== Enter id's item ====>\n";
+         int ids = input.askInt(msg2_1);
+         String msg2_2 = "=== Enter new item name ====>\n";
+         String name = input.askStr(msg2_2);
+         Item itemNew = new Item(name);
+         if (tracker.replace(ids, itemNew)) {
+            System.out.println("Ok");
+         } else {
+            System.out.println("Error");
+         }
+      }
+
+      public static void  deleteItem(Input input, Tracker tracker){
+         String msg3 = "=== Enter id's item for delete ====>\n";
+         int ids = input.askInt(msg3);
+         if (tracker.delete(ids)) {
+            System.out.println("Ok");
+         } else {
+            System.out.println("Error");
+         }
+      }
+
+
+      public void init(Input input, Tracker tracker) {
       boolean run = true;
       while (run) {
          this.showMenu();
@@ -14,11 +46,7 @@ public class StartUI {
          String msg = "Enter menu item: ";
          int select = Integer.valueOf(input.askInt(msg));
          if (select == 0) {
-            System.out.println("=== Create a new Item ====");
-            String msg0 = "Enter name: ";
-            String name = input.askStr(msg0);
-            Item item = new Item(name);
-            tracker.add(item);
+           createItem(input, tracker);
          } else if (select == 1) {
             System.out.println("=== All items ====>\n");
             Item[] itemRsl = tracker.findAll();
@@ -26,24 +54,9 @@ public class StartUI {
                System.out.println(item);
             }
          } else if (select == 2) {
-            String msg2_1 = "=== Enter id's item ====>\n";
-            int ids = input.askInt(msg2_1);
-            String msg2_2 = "=== Enter new item name ====>\n";
-            String name = input.askStr(msg2_2);
-            Item itemNew = new Item(name);
-            if (tracker.replace(ids, itemNew)) {
-               System.out.println("Ok");
-            } else {
-               System.out.println("Error");
-            }
+            replaceItem(input, tracker);
          } else if (select == 3) {
-            String msg3 = "=== Enter id's item for delete ====>\n";
-            int ids = input.askInt(msg3);
-            if (tracker.delete(ids)) {
-               System.out.println("Ok");
-            } else {
-               System.out.println("Error");
-            }
+          deleteItem(input, tracker);
          }else if (select == 4) {
             String msg4 = "=== Enter id's item for search ====>\n";
             int ids = input.askInt(msg4);
