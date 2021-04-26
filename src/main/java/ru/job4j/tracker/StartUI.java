@@ -8,17 +8,14 @@ public class StartUI {
 
       public static void createItem(Input input, Tracker tracker){
          System.out.println("=== Create a new Item ====");
-         String msg0 = "Enter name: ";
-         String name = input.askStr(msg0);
+         String name = input.askStr("Enter name: ");
          Item item = new Item(name);
          tracker.add(item);
       }
 
       public static void replaceItem(Input input, Tracker tracker) {
-         String msg2_1 = "=== Enter id's item ====>\n";
-         int ids = input.askInt(msg2_1);
-         String msg2_2 = "=== Enter new item name ====>\n";
-         String name = input.askStr(msg2_2);
+         int ids = input.askInt("=== Enter id's item ====>\n");
+         String name = input.askStr("=== Enter new item name ====>\n");
          Item itemNew = new Item(name);
          if (tracker.replace(ids, itemNew)) {
             System.out.println("Ok");
@@ -28,8 +25,7 @@ public class StartUI {
       }
 
       public static void  deleteItem(Input input, Tracker tracker){
-         String msg3 = "=== Enter id's item for delete ====>\n";
-         int ids = input.askInt(msg3);
+         int ids = input.askInt("=== Enter id's item for delete ====>\n");
          if (tracker.delete(ids)) {
             System.out.println("Ok");
          } else {
@@ -43,8 +39,7 @@ public class StartUI {
       while (run) {
          this.showMenu();
          System.out.print("Select: ");
-         String msg = "Enter menu item: ";
-         int select = Integer.valueOf(input.askInt(msg));
+         int select = input.askInt("Enter menu item: ");
          if (select == 0) {
            createItem(input, tracker);
          } else if (select == 1) {
@@ -58,8 +53,7 @@ public class StartUI {
          } else if (select == 3) {
           deleteItem(input, tracker);
          }else if (select == 4) {
-            String msg4 = "=== Enter id's item for search ====>\n";
-            int ids = input.askInt(msg4);
+            int ids = input.askInt("=== Enter id's item for search ====>\n");
             Item rstItem = tracker.findById(ids);
             if (rstItem != null) {
                System.out.println("Result : " + "Id name - "+ rstItem.getName());
@@ -67,8 +61,7 @@ public class StartUI {
                System.out.println("Item not found");
             }
          }else if (select == 5) {
-            String msg5 = "=== Enter item name for search ====>\n";
-            String name = input.askStr(msg5);
+            String name = input.askStr("=== Enter item name for search ====>\n");
             Item[] rstItem = tracker.findByName(name);
             if (rstItem.length > 0) {
                for(Item item : rstItem){
@@ -95,24 +88,6 @@ public class StartUI {
    }
 
    public static void main(String[] args) {
-       /*     Item item1 = new Item(1, "1111");
-       Item item2 = new Item(2, "2222");
-       Item item3 = new Item(3, "3333");
-
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-       LocalDateTime itemDate = item1.getDate();
-
-       String itemDateTimeFormat = itemDate.format(formatter);
-       System.out.println("Текущие дата и время после форматирования: " + itemDateTimeFormat);
-       */
-       /*tracker tracker = new Tracker();
-       tracker.add(item1);
-       tracker.add(item2);
-       System.out.println("----FindById-----");
-       Item itemResult = tracker.findById(1);
-       System.out.println("Item result " + itemResult.getName());
-       System.out.println(item3.toString());
-      */
       Input input = new ConsoleInput();
       Tracker tracker = new Tracker();
       new StartUI().init(input, tracker);
