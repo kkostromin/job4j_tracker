@@ -14,8 +14,8 @@ public class StartUI {
       }
 
       public static void replaceItem(Input input, Tracker tracker) {
-         int ids = input.askInt("=== Enter id's item ====>\n");
-         String name = input.askStr("=== Enter new item name ====>\n");
+         int ids = input.askInt("=== Enter id's item ====>" + System.lineSeparator());
+         String name = input.askStr("=== Enter new item name ====>" + System.lineSeparator());
          Item itemNew = new Item(name);
          if (tracker.replace(ids, itemNew)) {
             System.out.println("Ok");
@@ -25,7 +25,7 @@ public class StartUI {
       }
 
       public static void  deleteItem(Input input, Tracker tracker){
-         int ids = input.askInt("=== Enter id's item for delete ====>\n");
+         int ids = input.askInt("=== Enter id's item for delete ====>" + System.lineSeparator());
          if (tracker.delete(ids)) {
             System.out.println("Ok");
          } else {
@@ -34,7 +34,7 @@ public class StartUI {
       }
 
       public static void  findAllItem(Input input, Tracker tracker){
-         System.out.println("=== All items ====>\n");
+         System.out.println("=== All items ====>" + System.lineSeparator());
          Item[] itemRsl = tracker.findAll();
          for(Item item : itemRsl){
             System.out.println(item);
@@ -42,7 +42,7 @@ public class StartUI {
       }
 
       public static void  findById(Input input, Tracker tracker){
-         int ids = input.askInt("=== Enter id's item for search ====>\n");
+         int ids = input.askInt("=== Enter id's item for search ====>" + System.lineSeparator());
          Item rstItem = tracker.findById(ids);
          if (rstItem != null) {
             System.out.println("Result : " + "Id name - "+ rstItem.getName());
@@ -52,7 +52,7 @@ public class StartUI {
       }
 
       public static void  findByName(Input input, Tracker tracker) {
-         String name = input.askStr("=== Enter item name for search ====>\n");
+         String name = input.askStr("=== Enter item name for search ====>" + System.lineSeparator());
          Item[] rstItem = tracker.findByName(name);
          if (rstItem.length > 0) {
             for (Item item : rstItem) {
