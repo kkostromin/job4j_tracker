@@ -73,7 +73,14 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item 1"));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Show All Item" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() +
+                        "=== All items ====>" + System.lineSeparator() +
+                        item + System.lineSeparator()
+
+        ));
     }
 
     @Test
@@ -90,7 +97,12 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(findName) );
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Find item by Id" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() +
+                        "Result : Id name - " + item.getName() + System.lineSeparator()
+        ));
     }
 
     @Test
@@ -98,7 +110,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         String findName = "Item1";
-        tracker.add(new Item(findName));
+        Item item = tracker.add(new Item(findName));
         Input in = new StubInput(
                 new String[] {"0", findName, "1"}
         );
@@ -107,7 +119,11 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findByName(findName)[0].getName(), is(findName));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Find item by Name" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() + item + System.lineSeparator()
+        ));
     }
 
     @Test

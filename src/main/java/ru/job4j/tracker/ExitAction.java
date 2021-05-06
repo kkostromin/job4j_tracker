@@ -4,7 +4,7 @@ public class ExitAction implements UserAction {
     private final Output out;
 
     public ExitAction(Output out) {
-        this.out =out;
+        this.out = out;
     }
 
     @Override

@@ -21,6 +21,6 @@ public class FindIdAction implements UserAction {
         } else {
             out.println("Item not found");
         }
-        return true;
+        return false;
     }
 }

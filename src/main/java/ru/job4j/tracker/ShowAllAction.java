@@ -13,11 +13,11 @@ public class ShowAllAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        out.println("=== All items ====>" + System.lineSeparator());
+        out.println("=== All items ====>" );
         Item[] itemRsl = tracker.findAll();
         for(Item item : itemRsl){
             out.println(item);
         }
-        return true;
+        return false;
     }
 }
