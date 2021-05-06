@@ -84,7 +84,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindbyIdAction() {
+    public void whenFindByIdAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         String findName = "Item1";
@@ -106,7 +106,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindbyNameAction() {
+    public void whenFindByNameAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         String findName = "Item1";
