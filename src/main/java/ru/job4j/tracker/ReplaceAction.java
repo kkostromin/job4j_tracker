@@ -15,7 +15,16 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        int ids = input.askInt("=== Enter id's item ====>" + System.lineSeparator());
+        boolean run = true;
+        int ids = -1;
+        while(run){
+            ids = input.askInt("=== Enter id's item ====>" + System.lineSeparator());
+            if (tracker.findById(ids) == null){
+                out.println("Wrong input, you need enter valid id item");
+                continue;
+            }
+            else run = false;
+        }
         String name = input.askStr("=== Enter new item name ====>" + System.lineSeparator());
         Item itemNew = new Item(name);
         if (tracker.replace(ids, itemNew)) {

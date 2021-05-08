@@ -18,6 +18,6 @@ public class ShowAllAction implements UserAction{
         for(Item item : itemRsl){
             out.println(item);
         }
-        return false;
+        return true;
     }
 }
