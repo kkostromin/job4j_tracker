@@ -15,7 +15,7 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        boolean run = true;
+        /*boolean run = true;
         int ids = -1;
         while(run){
             ids = input.askInt("=== Enter id's item ====>" + System.lineSeparator());
@@ -24,7 +24,8 @@ public class ReplaceAction implements UserAction {
                 continue;
             }
             else run = false;
-        }
+        }*/
+        int ids = input.askInt("=== Enter id's item ====>" + System.lineSeparator());
         String name = input.askStr("=== Enter new item name ====>" + System.lineSeparator());
         Item itemNew = new Item(name);
         if (tracker.replace(ids, itemNew)) {
