@@ -20,7 +20,7 @@ public class SingleTracker {
         return tracker.add(item);
     }
 
-    public Item[] FindAll(){
+    public Item[] findAll(){
         return tracker.findAll();
     }
 
