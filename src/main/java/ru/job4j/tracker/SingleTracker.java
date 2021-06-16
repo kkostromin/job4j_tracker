@@ -5,6 +5,17 @@ public class SingleTracker {
 
     /* реализовать singleton */
 
+    private static SingleTracker instance;
+
+    private SingleTracker(){ }
+
+    public static SingleTracker getInstance() {
+        if (instance == null) {
+            instance = new SingleTracker();
+        }
+        return instance;
+    }
+
     public Item add(Item item) {
         return tracker.add(item);
     }
